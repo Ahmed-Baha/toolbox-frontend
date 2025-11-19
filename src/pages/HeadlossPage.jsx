@@ -5,6 +5,7 @@ import { Form, InputGroup, Button, Table } from "react-bootstrap";
 import api from '../api/client'
 
 export default function HeadLossPage() {
+     const url=`${import.meta.env.VITE_BACKEND_URL}/api`
   const [hazelForm, setHazelForm] = useState({ L: "", Q: "", D: "", C: "" });
   const [hazelResult, setHazelResult] = useState(null);
 
@@ -14,7 +15,7 @@ export default function HeadLossPage() {
   const handleHazelSubmit = async (e) => {
     e.preventDefault();
     try {
-  const res = await api.post("/headloss", hazelForm);
+  const res = await axios.post(`${url}/headloss`, hazelForm);
       setHazelResult(res.data);
     } catch (err) {
       console.error(err);
@@ -25,7 +26,7 @@ export default function HeadLossPage() {
   const handleDarcySubmit = async (e) => {
     e.preventDefault();
     try {
-  const res = await api.post("/darcy", darcyForm);
+  const res = await axios.post(`${url}/darcy`, darcyForm);
       setDarcyResult(res.data);
     } catch (err) {
       console.error(err);

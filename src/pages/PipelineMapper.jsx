@@ -25,7 +25,7 @@ export default function PipelineMapper() {
 
     // Fetch elevation data from backend
     try {
-  const res = await api.post("/elevation", { coordinates });
+  const res = await axios.post(`${url}/elevation`, { coordinates });
       setElevations(res.data);
       console.log("Elevation data:", res.data);
     } catch (err) {

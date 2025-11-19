@@ -9,6 +9,7 @@ import api from '../api/client'
 
 
 export default function FormPage(){
+     const url=`${import.meta.env.VITE_BACKEND_URL}/api`
       const [form, setForm] = useState({
   name: '',
   location: '',
@@ -20,7 +21,7 @@ const navigate=useNavigate()
     e.preventDefault();
   try{
 
-  const res=await api.post('/first',form);
+  const res=await axios.post(`${url}/first`,form);
 
 
     //     setData(prev => [...prev, res.data.data]); // immediately update list
